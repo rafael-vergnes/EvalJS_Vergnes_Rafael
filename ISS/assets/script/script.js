@@ -75,7 +75,7 @@ let theBouton = document.querySelector("button");
 theBouton.insertAdjacentElement('beforebegin', para);
 
 // On crée la fonction : météo via une API
-function addInfo (html, texte) {
+function addInfo (html) {
   theBouton.addEventListener("click", async function (clickEvent) {
     try {
         // On récupère toutes les données de l'api
@@ -104,11 +104,8 @@ function addInfo (html, texte) {
         let tempMin = infosMeteoTransformed.fcst_day_0.tmin;
 
         // On écrit le texte de la météo avec nos variables contenant nos infos
-        texte = `Aujourd'hui le temps est : ${conditionM}, et la température est de ${temp}°C
+        para.innerText = `Aujourd'hui le temps est : ${conditionM}, et la température est de ${temp}°C
         T° Max = ${tempMax}°C - T° Min = ${tempMin}°C`;
-
-        // On met le texte dans notre paragraphe
-        para.append(texte);
 
     // Gestion des erreurs
     } catch (error) {
@@ -118,4 +115,4 @@ function addInfo (html, texte) {
 }
 
 // On appelle la fonction
-addInfo(para, para.innerText);
+addInfo(para);
